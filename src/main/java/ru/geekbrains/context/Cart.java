@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,13 +27,7 @@ public class Cart {
     }
 
     public void delete(long id) {
-        Iterator<Product> iterator = productList.iterator();
-        while (iterator.hasNext()) {
-            Product product = iterator.next();
-            if (product.getId() == id) {
-                iterator.remove();
-            }
-        }
+        productList.removeIf(product -> product.getId() == id);
     }
 
     public void showcart() {
